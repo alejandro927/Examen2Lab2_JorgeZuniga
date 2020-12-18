@@ -20,12 +20,14 @@ public class HiloPiezaPollo extends Thread {
     private JProgressBar ProgressBar;
     private String comida;
     private int Norden;
+    private int tiempo;
 
-    public HiloPiezaPollo(JProgressBar ProgressBar, boolean vivo, String comida, JTable tabla,int Norden) {
+    public HiloPiezaPollo(JProgressBar ProgressBar, boolean vivo, String comida, JTable tabla,int Norden,int tiempo) {
         this.ProgressBar = ProgressBar;
         this.vivo = vivo;
         this.tabla = tabla;
         this.comida = comida;
+        this.tiempo = tiempo;
     }
 
     public JTable getTabla() {
@@ -80,18 +82,19 @@ public class HiloPiezaPollo extends Thread {
     public void run() {
         while (ProgressBar.getValue() < ProgressBar.getMaximum()) {
             if (vivo) {
-                ProgressBar.setValue(ProgressBar.getValue() + 100);
+                ProgressBar.setValue(ProgressBar.getValue() + 10);
             }
             try {
-                Thread.sleep(500);
+                Thread.sleep(30);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloPiezaPollo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        Object row[] = {Norden,comida + new Date().toString()};
+        Object row[] = {Norden,comida , tiempo};
         DefaultTableModel m = (DefaultTableModel) tabla.getModel();
         m.addRow(row);
         tabla.setModel(m);
+        ProgressBar.setMaximum(0);
 
     }
 }

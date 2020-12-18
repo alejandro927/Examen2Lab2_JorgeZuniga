@@ -60,6 +60,7 @@ public class Main extends javax.swing.JFrame {
         tabla2 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         llenar = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         Simulacion = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -69,6 +70,12 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Simular = new javax.swing.JButton();
         Combo1 = new javax.swing.JComboBox<>();
+        Factura = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Listar = new javax.swing.JButton();
@@ -222,36 +229,45 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(13, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(llenar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(llenar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(159, 159, 159))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel4)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(llenar)
-                .addGap(36, 36, 36))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(llenar)
+                    .addComponent(jButton5))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout ListarClientesLayout = new javax.swing.GroupLayout(ListarClientes.getContentPane());
@@ -285,6 +301,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         Simular.setText("Simular");
+        Simular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SimularMouseClicked(evt);
+            }
+        });
         Simular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SimularActionPerformed(evt);
@@ -350,6 +371,58 @@ public class Main extends javax.swing.JFrame {
             SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SimulacionLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jButton4.setText("Generar Factura");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(30, 30, 30))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(28, 28, 28))
+        );
+
+        javax.swing.GroupLayout FacturaLayout = new javax.swing.GroupLayout(Factura.getContentPane());
+        Factura.getContentPane().setLayout(FacturaLayout);
+        FacturaLayout.setHorizontalGroup(
+            FacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FacturaLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        FacturaLayout.setVerticalGroup(
+            FacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FacturaLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -526,8 +599,7 @@ public class Main extends javax.swing.JFrame {
 
     private void llenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llenarActionPerformed
         // TODO add your handling code here:
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero", "Nombre", "Elementos"}
+        tabla2.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero", "Nombre", "Elementos"}
         ) {
             Class[] types = new Class[]{java.lang.String.class, java.lang.String.class, java.lang.String.class};
 
@@ -543,102 +615,48 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        AdministrarClientes ad = new AdministrarClientes("./Clientes.jz");
+        ad.cargarArchivo();
+        for (int i = 0; i < ad.getListaClientes().size(); i++) {
+            Object row[] = {ad.getListaClientes().get(i).getCont(), ad.getListaClientes().get(i).getNombre(), ad.getListaClientes().get(i).getOrden()};
+            System.out.println(ad.getListaClientes().get(i).getCont());
+            System.out.println(ad.getListaClientes().get(i).getNombre());
+            System.out.println(ad.getListaClientes().get(i).getOrden());
+            DefaultTableModel m1 = (DefaultTableModel) tabla2.getModel();
+            m1.addRow(row);
+            tabla2.setModel(m1);
+            System.out.println("");
+        }
+
 
     }//GEN-LAST:event_llenarActionPerformed
 
     private void PedirComidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PedirComidaMouseClicked
         // TODO add your handling code here:
-        Ordenes.setLocationRelativeTo(this);
+        Ordenes.setLocationRelativeTo(null);
         Ordenes.pack();
         Ordenes.setVisible(true);
     }//GEN-LAST:event_PedirComidaMouseClicked
 
     private void ListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarActionPerformed
         // TODO add your handling code here:
-        ListarClientes.setLocationRelativeTo(this);
+        ListarClientes.setLocationRelativeTo(null);
         ListarClientes.pack();
         ListarClientes.setVisible(true);
     }//GEN-LAST:event_ListarActionPerformed
 
     private void SimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimularActionPerformed
         // TODO add your handling code here:
-        try {
-            tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero Orden", "Elemento", "Tiempo"}
-            ) {
-                Class[] types = new Class[]{java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class};
-
-                boolean[] canEdit = new boolean[]{
-                    false, false, false, false};
-
-                public Class getColumnClass(int columnIndex) {
-                    return types[columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
-                }
-            });
-            AdministrarOrdenes o = new AdministrarOrdenes("./Ordenes.jz");
-            o.cargarArchivo();
-            int cont = 0;
-            o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden().get(cont);
-            System.out.println(o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden().get(cont));
-            ArrayList orden = new ArrayList();
-            orden.add(o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden());
-
-            for (int i = 0; i < orden.size(); i++) {
-                JOptionPane.showMessageDialog(null, "entra");
-                int or = o.getListaOrdenes().get(Combo1.getSelectedIndex()).getNumeroOrden();
-                if (orden.get(cont) == "Pollo") {
-                    Barra1.setMaximum(100 * 4);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pollo", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-                if (orden.get(cont) == "Biscuit") {
-                    Barra1.setMaximum(100 * 1);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Biscuit", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-                if (orden.get(cont) == "Pure") {
-                    Barra1.setMaximum(100 * 2);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pure", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-                if (orden.get(cont) == "Papas") {
-                    Barra1.setMaximum(100 * 3);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Papas", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-                if (orden.get(cont) == "Refresco") {
-                    Barra1.setMaximum(100 * 1);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Refresco", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-                if (orden.get(cont) == "Pie") {
-                    Barra1.setMaximum(100 * 5);
-                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pie", this.tabla, or);
-                    hilo.start();
-                    Barra1.setMaximum(0);
-                }
-            }
-
-        } catch (Exception e) {
-        }
 
 
     }//GEN-LAST:event_SimularActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Simulacion.setLocationRelativeTo(this);
-        Simulacion.pack();
-        Simulacion.setVisible(true);
-        Ordenes.setVisible(false);
+        Factura.setLocationRelativeTo(null);
+        Factura.pack();
+        Factura.setVisible(true);
+        Simulacion.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -655,6 +673,80 @@ public class Main extends javax.swing.JFrame {
         }
         Combo1.setModel(modelo);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void SimularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SimularMouseClicked
+        // TODO add your handling code here:
+
+        AdministrarClientes o = new AdministrarClientes("./Clientes.jz");
+        o.cargarArchivo();
+
+        int cont = o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().size();
+
+        System.out.println(cont);
+
+        ArrayList orden = new ArrayList();
+        for (int i = 0; i < cont; i++) {
+            orden.add(o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().get(i));
+//            System.out.println(""+orden);
+//            System.out.println(""+orden.get(i));
+        }
+
+        for (int i = 0; i < cont; i++) {
+
+            String comida = "";
+            comida = o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().get(i).toString();
+            System.out.println(comida);
+
+            if (comida.equals("Pollo")) {
+                Barra1.setMaximum(100 * 4);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 4);
+                hilo.start();
+                //break;
+            }
+
+            if (comida.equals("Biscuit")) {
+                Barra1.setMaximum(100 * 1);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 1);
+                hilo.start();
+                //break;
+            }
+            if (comida.equals("Pure")) {
+                Barra1.setMaximum(100 * 2);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 2);
+                hilo.start();
+                //break;
+            }
+            if (comida.equals("Papas")) {
+                Barra1.setMaximum(100 * 3);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 3);
+                hilo.start();
+                //break;
+            }
+            if (comida.equals("Refresco")) {
+                Barra1.setMaximum(100 * 1);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 1);
+                hilo.start();
+                //break;
+            }
+            if (comida.equals("Pie")) {
+                Barra1.setMaximum(100 * 5);
+                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 5);
+                hilo.start();
+                //break;
+            }
+        }
+
+    }//GEN-LAST:event_SimularMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Factura.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        ListarClientes.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,6 +787,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JProgressBar Barra1;
     private javax.swing.JCheckBox Biscuit;
     private javax.swing.JComboBox<String> Combo1;
+    private javax.swing.JFrame Factura;
     private javax.swing.JButton Listar;
     private javax.swing.JDialog ListarClientes;
     private javax.swing.JTextField NombreCliente;
@@ -715,6 +808,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner SpinnerRefresco;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -724,8 +820,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton llenar;
     private javax.swing.JCheckBox papas;
     private javax.swing.JTable tabla;
