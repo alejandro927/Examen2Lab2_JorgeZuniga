@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -562,9 +563,69 @@ public class Main extends javax.swing.JFrame {
     private void SimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimularActionPerformed
         // TODO add your handling code here:
         try {
+            tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero Orden", "Elemento", "Tiempo"}
+            ) {
+                Class[] types = new Class[]{java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class};
 
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false};
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
             AdministrarOrdenes o = new AdministrarOrdenes("./Ordenes.jz");
             o.cargarArchivo();
+            int cont = 0;
+            o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden().get(cont);
+            System.out.println(o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden().get(cont));
+            ArrayList orden = new ArrayList();
+            orden.add(o.getListaOrdenes().get(Combo1.getSelectedIndex()).getOrden());
+
+            for (int i = 0; i < orden.size(); i++) {
+                JOptionPane.showMessageDialog(null, "entra");
+                int or = o.getListaOrdenes().get(Combo1.getSelectedIndex()).getNumeroOrden();
+                if (orden.get(cont) == "Pollo") {
+                    Barra1.setMaximum(100 * 4);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pollo", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+                if (orden.get(cont) == "Biscuit") {
+                    Barra1.setMaximum(100 * 1);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Biscuit", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+                if (orden.get(cont) == "Pure") {
+                    Barra1.setMaximum(100 * 2);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pure", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+                if (orden.get(cont) == "Papas") {
+                    Barra1.setMaximum(100 * 3);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Papas", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+                if (orden.get(cont) == "Refresco") {
+                    Barra1.setMaximum(100 * 1);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Refresco", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+                if (orden.get(cont) == "Pie") {
+                    Barra1.setMaximum(100 * 5);
+                    HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, "Pie", this.tabla, or);
+                    hilo.start();
+                    Barra1.setMaximum(0);
+                }
+            }
 
         } catch (Exception e) {
         }
@@ -578,7 +639,7 @@ public class Main extends javax.swing.JFrame {
         Simulacion.pack();
         Simulacion.setVisible(true);
         Ordenes.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -586,6 +647,13 @@ public class Main extends javax.swing.JFrame {
         Simulacion.setLocationRelativeTo(this);
         Simulacion.pack();
         Simulacion.setVisible(true);
+        AdministrarClientes pp = new AdministrarClientes("./Clientes.jz");
+        pp.cargarArchivo();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < pp.getListaClientes().size(); i++) {
+            modelo.addElement(pp.getListaClientes().get(i));
+        }
+        Combo1.setModel(modelo);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
