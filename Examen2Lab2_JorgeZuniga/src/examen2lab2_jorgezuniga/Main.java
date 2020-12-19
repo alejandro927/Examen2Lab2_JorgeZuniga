@@ -74,7 +74,7 @@ public class Main extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        area = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -374,11 +374,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        area.setColumns(20);
+        area.setRows(5);
+        jScrollPane3.setViewportView(area);
 
         jButton4.setText("Generar Factura");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -664,29 +669,28 @@ public class Main extends javax.swing.JFrame {
 
     private void SimularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SimularMouseClicked
         // TODO add your handling code here:
-        tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero orden", "Elemento","Tiempo"
+        try {
+            tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][]{}, new String[]{"Numero Orden", "Elemento", "Tiempo"}
+            ) {
+                Class[] types = new Class[]{java.lang.String.class, java.lang.String.class, java.lang.String.class};
+
+                boolean[] canEdit = new boolean[]{
+                    false, false, false};
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+
+            int indice = Combo1.getSelectedIndex();
+            HiloPiezaPollo hilo = new HiloPiezaPollo(true, tabla, Barra1, indice, Combo1);
+            hilo.start();
+        } catch (Exception e) {
         }
-        ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean[]{
-                false, false, false,false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-        });
-
-        int indice = Combo1.getSelectedIndex();
-        HiloPiezaPollo hilo = new HiloPiezaPollo(true, tabla, Barra1, indice,Combo1);
-        hilo.start();
-
     }//GEN-LAST:event_SimularMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -698,6 +702,19 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         ListarClientes.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        try {
+            AdministrarClientes ad = new AdministrarClientes("./Clientes.jz");
+            ad.cargarArchivo();
+            Cliente a = (Cliente) Combo1.getSelectedItem();
+            String nombre = "";
+            nombre = a.getNombre();
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -757,6 +774,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner SpinnerPollo;
     private javax.swing.JSpinner SpinnerPure;
     private javax.swing.JSpinner SpinnerRefresco;
+    private javax.swing.JTextArea area;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -775,7 +793,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton llenar;
     private javax.swing.JCheckBox papas;
     private javax.swing.JTable tabla;
