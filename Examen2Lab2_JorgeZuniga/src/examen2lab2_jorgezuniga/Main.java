@@ -306,28 +306,22 @@ public class Main extends javax.swing.JFrame {
                 SimularMouseClicked(evt);
             }
         });
-        Simular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SimularActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Simular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(Barra1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(185, 185, 185)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Simular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Combo1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -335,11 +329,10 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(216, 216, 216))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Combo1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                        .addGap(216, 216, 216))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(Barra1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,12 +638,6 @@ public class Main extends javax.swing.JFrame {
         ListarClientes.setVisible(true);
     }//GEN-LAST:event_ListarActionPerformed
 
-    private void SimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimularActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_SimularActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Factura.setLocationRelativeTo(null);
@@ -676,65 +663,28 @@ public class Main extends javax.swing.JFrame {
 
     private void SimularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SimularMouseClicked
         // TODO add your handling code here:
-
-        AdministrarClientes o = new AdministrarClientes("./Clientes.jz");
-        o.cargarArchivo();
-
-        int cont = o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().size();
-
-        System.out.println(cont);
-
-        ArrayList orden = new ArrayList();
-        for (int i = 0; i < cont; i++) {
-            orden.add(o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().get(i));
-//            System.out.println(""+orden);
-//            System.out.println(""+orden.get(i));
+        tabla.setModel(new javax.swing.table.DefaultTableModel(new Object[][][][]{}, new String[]{"Numero orden", "Elemento","Tiempo"
         }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false,false
+            };
 
-        for (int i = 0; i < cont; i++) {
-
-            String comida = "";
-            comida = o.getListaClientes().get(Combo1.getSelectedIndex()).getOrden().get(i).toString();
-            System.out.println(comida);
-
-            if (comida.equals("Pollo")) {
-                Barra1.setMaximum(100 * 4);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 4);
-                hilo.start();
-                //break;
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
             }
 
-            if (comida.equals("Biscuit")) {
-                Barra1.setMaximum(100 * 1);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 1);
-                hilo.start();
-                //break;
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
             }
-            if (comida.equals("Pure")) {
-                Barra1.setMaximum(100 * 2);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 2);
-                hilo.start();
-                //break;
-            }
-            if (comida.equals("Papas")) {
-                Barra1.setMaximum(100 * 3);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 3);
-                hilo.start();
-                //break;
-            }
-            if (comida.equals("Refresco")) {
-                Barra1.setMaximum(100 * 1);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 1);
-                hilo.start();
-                //break;
-            }
-            if (comida.equals("Pie")) {
-                Barra1.setMaximum(100 * 5);
-                HiloPiezaPollo hilo = new HiloPiezaPollo(this.Barra1, true, comida, this.tabla, 0, 5);
-                hilo.start();
-                //break;
-            }
-        }
+        });
+
+        int indice = Combo1.getSelectedIndex();
+        HiloPiezaPollo hilo = new HiloPiezaPollo(true, tabla, Barra1, indice,Combo1);
+        hilo.start();
 
     }//GEN-LAST:event_SimularMouseClicked
 
