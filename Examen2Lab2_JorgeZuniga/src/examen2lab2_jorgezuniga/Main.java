@@ -499,6 +499,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         AdministrarOrdenes p = new AdministrarOrdenes("./Ordenez.jz");
         p.cargarArchivo();
+        int contador;
         if (p.getListaOrdenes().size() == 0) {
             contador = 0;
         } else {
@@ -780,6 +781,4 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JTable tabla2;
     // End of variables declaration//GEN-END:variables
-    private int contador;
-
 }
